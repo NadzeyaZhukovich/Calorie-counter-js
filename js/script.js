@@ -1,3 +1,5 @@
+const {calculateWeightForMan, calculateWeightForWomen} = require('./weight-calculator.js');
+
 function getCheckedElement(inpursGroup) {
     for(let i = 0; i < inpursGroup.length; i++) {
         if(inpursGroup[i].checked){ 
@@ -21,12 +23,13 @@ function getData() {
 
 function maintainingWeight(data) {
     if(data.gender === 'male') {
-        return (10 * data.weight) + (6.25 * data.height) - (5 * data.age) + 5;
+        return calculateWeightForMan(data);
     } else {
-        return (10 * data.weight) + (6.25 * data.height) - (5 * data.age) - 161;
+        return calculateWeightForWomen(data);
     }
 }
 
+// TODO: wrap calculateWeightForMan and calculateWeightForWomen with try-catch block
 function activityCoefficient() {
     const data = getData();
     let weight = maintainingWeight(data);

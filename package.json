@@ -1,0 +1,23 @@
+{
+  "name": "starter-template",
+  "version": "1.0.0",
+  "description": "Calorie counter",
+  "main": "index.html",
+  "scripts": {
+    "bundle": "browserify js/script.js -o bundle.js",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NadzeyaZhukovich/calorie-counter-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NadzeyaZhukovich/calorie-counter-js/issues"
+  },
+  "homepage": "https://github.com/NadzeyaZhukovich/calorie-counter-js#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
