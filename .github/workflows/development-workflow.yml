@@ -1,0 +1,11 @@
+name: Feature development workflow
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Build the project
+        run: npm run bundle
