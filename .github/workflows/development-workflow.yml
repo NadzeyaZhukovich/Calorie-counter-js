@@ -28,4 +28,5 @@ jobs:
         run: npm run bundle  
       - name: Cypress run
         uses: cypress-io/github-action@v2
-          start: npm run serve
+        with:
+          serve: npm run serve
