@@ -1,6 +1,6 @@
 describe('Check default state', () => {
     it('chosed male, age equel 0, height equel 0, weight eguel 0, activity equel min', () => {
-      cy.visit('http://localhost:52330/index.html');
+      cy.visit('http://localhost:8081/');
       
       cy.get('[data-cy="input-male"]')
         .should('be.checked')

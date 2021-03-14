@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "bundle": "browserify js/script.js -o bundle.js",
+    "serve": "npm run bundle && npx http-server",
     "test": "jest --coverage",
     "cypress:open": "cypress open"
   },
@@ -21,6 +22,7 @@
   "devDependencies": {
     "browserify": "^17.0.0",
     "cypress": "^6.6.0",
+    "http-server": "^0.12.3",
     "jest": "^26.6.3"
   }
 }
