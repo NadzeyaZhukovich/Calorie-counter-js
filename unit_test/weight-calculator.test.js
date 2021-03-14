@@ -1,7 +1,7 @@
 const { test, it } = require('@jest/globals');
 const { fail } = require('yargs');
-const {calculateWeightForMan, calculateWeightForWomen} = require('./../js/weight-calculator.js');
-const {NullObjectPropertyError, NullObjectError, ZeroObjectPropertyError, LessZeroObjectPropertyError} = require('./../js/weight-calculator.js');
+const {calculateWeightForMan, calculateWeightForWomen} = require('../js/weight-calculator.js');
+const {NullObjectPropertyError, NullObjectError, ZeroObjectPropertyError, LessZeroObjectPropertyError} = require('../js/weight-calculator.js');
 
 describe('calculateWeightForMan', () => {
   it('returns correct result when data is filled and all values more than 0', () => {
