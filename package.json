@@ -6,7 +6,7 @@
   "scripts": {
     "bundle": "browserify js/script.js -o bundle.js",
     "serve": "npm run bundle && npx http-server",
-    "test": "jest --coverage",
+    "test": "jest --testPathPattern=unit_test --coverage",
     "cypress:open": "cypress open"
   },
   "repository": {
