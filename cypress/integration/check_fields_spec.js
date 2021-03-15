@@ -11,10 +11,8 @@ describe('Check default state', () => {
         cy.get('[data-cy="input-age"]')
             .should('have.value', '20')
         
-
-        // TODO: 
-        // cy.get('[data-cy="reset-button"]')
-        //     .should('be.enabled')
+        cy.get('[data-cy="reset-button"]')
+            .should('be.enabled')
 
         cy.get('[data-cy="submit-button"]')
             .should('be.disabled')
@@ -35,9 +33,8 @@ describe('Check default state', () => {
         cy.get('[data-cy="reset-button"]')
             .should('be.enabled')  
       
-        // TODO:
-        // cy.get('[data-cy="submit-button"]')
-        //     .should('be.enabled')
+        cy.get('[data-cy="submit-button"]')
+            .should('be.enabled')
 
         cy.get('[data-cy="input-activity-medium"]')
         .check({ force: true }).should('be.checked')

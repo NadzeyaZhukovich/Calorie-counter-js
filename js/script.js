@@ -91,14 +91,14 @@ function resetFields() {
         .forEach(element => {
             const input = element.firstElementChild;
             input.value = "";
-            input.dispatchEvent(new Event('change'));
+            input.dispatchEvent(new Event('input'));
         });
 }
 
 
 let inputs = document.querySelectorAll('.input__wrapper');
 inputs.forEach(element => {
-    element.firstElementChild.addEventListener('change', (e) => {
+    element.firstElementChild.addEventListener('input', (e) => {
         changeCalculateEnableState();
         changeResetEnableState();
     });
