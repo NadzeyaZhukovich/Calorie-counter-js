@@ -1,5 +1,5 @@
-describe('Check default state', () => {
-    it('chosed male, age equel 0, height equel 0, weight eguel 0, activity equel min', () => {
+describe('Check calculations for male for high activity', () => {
+    it('when age equel 35, height equel 189, weight eguel 100, activity equel high', () => {
         cy.visit('http://localhost:8080/');
 
         cy.get('[data-cy="input-male"]')
@@ -30,7 +30,7 @@ describe('Check default state', () => {
             .should('have.text', '2949')
 
         cy.get('[data-cy="result-calories-maximal"]')
-            .should('have.text', '3990')    
+            .should('have.text', '3989')    
          
     })
   })

@@ -1,4 +1,4 @@
-const {calculateWeightForMan, calculateWeightForWomen} = require('./weight-calculator.js');
+const { calculateWeight } = require('./weight-calculator.js');
 
 function getCheckedElement(inpursGroup) {
     for(let i = 0; i < inpursGroup.length; i++) {
@@ -6,6 +6,7 @@ function getCheckedElement(inpursGroup) {
             return inpursGroup[i].value;
         }
     }
+
     return '';
 }
 
@@ -21,42 +22,18 @@ function getData() {
     return data
 }
 
-function maintainingWeight(data) {
-    if(data.gender === 'male') {
-        return calculateWeightForMan(data);
-    } else {
-        return calculateWeightForWomen(data);
-    }
+// TODO: wrap calculateWeight with try-catch block
+
+function normWeight(data) {
+    return calculateWeight(data);
 }
 
-// TODO: wrap calculateWeightForMan and calculateWeightForWomen with try-catch block
-function activityCoefficient() {
-    const data = getData();
-    let weight = maintainingWeight(data);
-
-    switch(data.activity) {
-        case 'min':
-           return weight * 1.2;
-        case 'low':
-            return weight * 1.375;
-        case 'medium':
-            return weight * 1.55;
-        case 'high': 
-            return weight * 1.725;
-        case 'max':
-            return weight * 1.9;
-        default:
-            return 'something went wrong';
-
-    }
+function loseWeight(data) {
+    return calculateWeight(data) * 0.85;
 }
 
-function loseWeight() {
-    return activityCoefficient() - activityCoefficient() * 0.15;
-}
-
-function putWeight() {
-    return activityCoefficient() + activityCoefficient() * 0.15;
+function putWeight(data) {
+    return calculateWeight(data) * 1.15;
 }
 
 function changeCalculateEnableState() {
@@ -66,19 +43,16 @@ function changeCalculateEnableState() {
     } else {
         submit.disabled = true;
     }
-}
+};
 
 function changeResetEnableState() {
     const data = getData();
-    console.log(data);
     if(!isNaN(data.age) || !isNaN(data.height) || !isNaN(data.weight)) {
         reset.disabled = false;
     } else {
         reset.disabled = true;
     }
-}
-
-
+};
 
 function resetFields() {
     let result = document.querySelector('.counter__result');
@@ -93,8 +67,7 @@ function resetFields() {
             input.value = "";
             input.dispatchEvent(new Event('input'));
         });
-}
-
+};
 
 let inputs = document.querySelectorAll('.input__wrapper');
 inputs.forEach(element => {
@@ -104,7 +77,6 @@ inputs.forEach(element => {
     });
 });
 
-
 const submit = document.querySelector('.form__submit-button');
 submit.addEventListener('click', e => {
     e.preventDefault();
@@ -112,15 +84,13 @@ submit.addEventListener('click', e => {
     result.classList.remove("counter__result--hidden");
 
     let weight = document.getElementById('calories-norm');
-    weight.textContent = activityCoefficient().toFixed(0);
+    weight.textContent = normWeight(getData()).toFixed(0);
 
     let lose = document.getElementById('calories-minimal');
-    lose.textContent = loseWeight().toFixed(0);
+    lose.textContent = Math.round(loseWeight(getData()));
 
     let put = document.getElementById('calories-maximal');
-    put.textContent = putWeight().toFixed(0);
-
-    console.log('data =>', activityCoefficient());
+    put.textContent = putWeight(getData()).toFixed(0);
 })
 
 const reset = document.querySelector('.form__reset-button');

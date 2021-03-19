@@ -1,5 +1,5 @@
-describe('Check default state', () => {
-    it('chosed male, age equel 0, height equel 0, weight eguel 0, activity equel min', () => {
+describe('Check calculations for male for minimal activity', () => {
+    it('when age equel 21, height equel 150 , weight eguel 50, activity equel minimal', () => {
         cy.visit('http://localhost:8080/');
 
         cy.get('[data-cy="input-male"]')

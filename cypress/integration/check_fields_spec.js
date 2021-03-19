@@ -1,5 +1,5 @@
-describe('Check default state', () => {
-    it('chosed male, age equel 0, height equel 0, weight eguel 0, activity equel min', () => {
+describe('Check fields behavior', () => {
+    it('reset-button is available than one of inpus is filled, submit-button is avalible than all inputs are filled, form has default state after click on the reset button', () => {
         cy.visit('http://localhost:8080/');
 
         cy.get('[data-cy="input-female"]')
@@ -39,7 +39,6 @@ describe('Check default state', () => {
         cy.get('[data-cy="input-activity-medium"]')
         .check({ force: true }).should('be.checked')
         
-
 
         cy.get('[data-cy="reset-button"]')
             .click()
