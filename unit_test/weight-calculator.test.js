@@ -1,6 +1,6 @@
 const { test, it } = require('@jest/globals');
 const { fail } = require('yargs');
-const { calculateWeight } = require('../js/weight-calculator.js');
+const { normWeight, loseWeight, putWeight } = require('../js/weight-calculator.js');
 const { IllegalArgumentError } = require('../js/weight-calculator.js');
 
 describe('calculateWeightForMan', () => {
@@ -14,7 +14,7 @@ describe('calculateWeightForMan', () => {
       activity: 'min',
     };
 
-    expect(calculateWeight(data))
+    expect(normWeight(data))
       .toBe(expectedResult);
   });
 
@@ -28,7 +28,7 @@ describe('calculateWeightForMan', () => {
       activity: 'low',
     };
 
-    expect(calculateWeight(data))
+    expect(normWeight(data))
       .toBe(expectedResult);
   });
 
@@ -42,7 +42,7 @@ describe('calculateWeightForMan', () => {
       activity: 'medium',
     };
 
-    expect(calculateWeight(data))
+    expect(normWeight(data))
       .toBe(expectedResult);
   });
 
@@ -56,7 +56,7 @@ describe('calculateWeightForMan', () => {
       activity: 'high',
     };
 
-    expect(calculateWeight(data))
+    expect(normWeight(data))
       .toBe(expectedResult);
   });
 
@@ -70,12 +70,12 @@ describe('calculateWeightForMan', () => {
       activity: 'max',
     };
 
-    expect(calculateWeight(data))
+    expect(normWeight(data))
       .toBe(expectedResult);
   });
   
   it('throws IllegalArgumentError when data is empty', () => {
-    expect(() => { calculateWeight(null)})
+    expect(() => { normWeight(null)})
       .toThrow(IllegalArgumentError);
   });
   
@@ -87,7 +87,7 @@ describe('calculateWeightForMan', () => {
       gender: 'male',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   });
 
@@ -99,7 +99,7 @@ describe('calculateWeightForMan', () => {
       gender: 'male',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   });
 
@@ -111,7 +111,7 @@ describe('calculateWeightForMan', () => {
       gender: 'male',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   });
 
@@ -123,7 +123,7 @@ describe('calculateWeightForMan', () => {
       gender: 'male',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
 
@@ -135,7 +135,7 @@ describe('calculateWeightForMan', () => {
       gender: 'male',
       activity: 'min',
 };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
 
@@ -147,7 +147,7 @@ describe('calculateWeightForMan', () => {
       gender: 'male',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
 
@@ -160,7 +160,7 @@ describe('calculateWeightForMan', () => {
       gender: 'male',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
 
@@ -172,7 +172,7 @@ describe('calculateWeightForMan', () => {
       gender: 'male',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
 
@@ -184,7 +184,7 @@ describe('calculateWeightForMan', () => {
       gender: 'male',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
 })
@@ -201,7 +201,7 @@ describe('calculateWeightForWomen', () => {
       activity: 'min',
     };
 
-    expect(calculateWeight(data))
+    expect(normWeight(data))
       .toBe(expectedResult);
   });
 
@@ -215,7 +215,7 @@ describe('calculateWeightForWomen', () => {
       activity: 'low',
     };
 
-    expect(calculateWeight(data))
+    expect(normWeight(data))
       .toBe(expectedResult);
   });
 
@@ -229,7 +229,7 @@ describe('calculateWeightForWomen', () => {
       activity: 'medium',
     };
 
-    expect(calculateWeight(data))
+    expect(normWeight(data))
       .toBe(expectedResult);
   });
 
@@ -243,7 +243,7 @@ describe('calculateWeightForWomen', () => {
       activity: 'high',
     };
 
-    expect(calculateWeight(data))
+    expect(normWeight(data))
       .toBe(expectedResult);
   });
 
@@ -257,12 +257,12 @@ describe('calculateWeightForWomen', () => {
       activity: 'max',
     };
 
-    expect(calculateWeight(data))
+    expect(normWeight(data))
       .toBe(expectedResult);
   });
   
   it('throws IllegalArgumentError when data is empty', () => {
-    expect(() => { calculateWeight(null)})
+    expect(() => { normWeight(null)})
       .toThrow(IllegalArgumentError);
   });
   
@@ -274,7 +274,7 @@ describe('calculateWeightForWomen', () => {
       gender: 'female',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   });
 
@@ -286,7 +286,7 @@ describe('calculateWeightForWomen', () => {
       gender: 'female',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   });
 
@@ -298,7 +298,7 @@ describe('calculateWeightForWomen', () => {
       gender: 'female',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   });
 
@@ -310,7 +310,7 @@ describe('calculateWeightForWomen', () => {
       gender: 'female',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
 
@@ -322,7 +322,7 @@ describe('calculateWeightForWomen', () => {
       gender: 'female',
       activity: 'min',
 };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
 
@@ -334,7 +334,7 @@ describe('calculateWeightForWomen', () => {
       gender: 'female',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
 
@@ -346,7 +346,7 @@ describe('calculateWeightForWomen', () => {
       gender: 'female',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
 
@@ -358,7 +358,7 @@ describe('calculateWeightForWomen', () => {
       gender: 'female',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
 
@@ -370,7 +370,71 @@ describe('calculateWeightForWomen', () => {
       gender: 'female',
       activity: 'min',
     };
-    expect(() => calculateWeight(data))
+    expect(() => normWeight(data))
       .toThrow(IllegalArgumentError);
   })
+})
+
+describe('loseWeightForMale', () => {
+  it('returns correct result when data is filled and weight coefficient is 0.58', () => {
+    const expectedResult = 1153;
+    const data = {
+      weight: 100,
+      height: 100,
+      age: 100,
+      gender: 'male',
+      activity: 'min',
+    };
+
+    expect(loseWeight(data))
+      .toBe(expectedResult);
+  });
+})
+
+describe('loseWeightForFemale', () => {
+  it('returns correct result when data is filled and weight coefficient is 0.58', () => {
+    const expectedResult = 983;
+    const data = {
+      weight: 100,
+      height: 100,
+      age: 100,
+      gender: 'female',
+      activity: 'min',
+    };
+
+    expect(loseWeight(data))
+      .toBe(expectedResult);
+  });
+})
+
+describe('putWeightForMale', () => {
+  it('returns correct result when data is filled and weight coefficient is 1.15', () => {
+    const expectedResult = 1559;
+    const data = {
+      weight: 100,
+      height: 100,
+      age: 100,
+      gender: 'male',
+      activity: 'min',
+    };
+
+    expect(putWeight(data))
+      .toBe(expectedResult);
+  });
+})
+
+describe('putWeightForFemale', () => {
+  it('returns correct result when data is filled and weight coefficient is 1.15', () => {
+    const expectedResult = 1330;
+    const data = {
+      weight: 100,
+      height: 100,
+      age: 100,
+      gender: 'female',
+      activity: 'min',
+    };
+
+    expect(putWeight(data))
+      .toBe(expectedResult);
+  });
 })

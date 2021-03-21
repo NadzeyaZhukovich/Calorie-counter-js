@@ -30,7 +30,7 @@ describe('Check calculations for male for high activity', () => {
             .should('have.text', '2949')
 
         cy.get('[data-cy="result-calories-maximal"]')
-            .should('have.text', '3989')    
+            .should('have.text', '3990')    
          
     })
   })

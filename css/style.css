@@ -217,7 +217,8 @@ input[type="number"] {
 }
 
 .counter__form,
-.counter__result {
+.counter__result,
+.incorrect__data {
   padding: 32px 32px;
 
   background-color: var(--color-background-main);
@@ -232,8 +233,6 @@ input[type="number"] {
 }
 
 .counter__result {
-  opacity: 1;
-  visibility: visible;
   border-radius: 12px;
 
   transition: 0.6s ease;
@@ -241,8 +240,7 @@ input[type="number"] {
 }
 
 .counter__result--hidden {
-  opacity: 0;
-  visibility: hidden;
+  display: none;
 }
 
 .counter__result > .heading {
@@ -277,6 +275,23 @@ input[type="number"] {
   margin: 0;
 
   color: var(--color-gray-dark);
+}
+
+.incorrect__data {
+  border-radius: 12px;
+
+  transition: 0.6s ease;
+  transition-property: opacity, visibility;
+}
+
+.incorrect__data > .heading {
+  margin-bottom: 12px;
+
+  color: var(--color-accent);
+}
+
+.incorrect__data--hidden {
+  display: none;
 }
 
 .switcher {

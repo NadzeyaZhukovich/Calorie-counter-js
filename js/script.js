@@ -1,4 +1,10 @@
-const { calculateWeight } = require('./weight-calculator.js');
+const { normWeight, loseWeight, putWeight, IllegalArgumentError } = require('./weight-calculator.js');
+
+const submit = document.querySelector('.form__submit-button');
+const reset = document.querySelector('.form__reset-button');
+const inputs = document.querySelectorAll('.input__wrapper');
+const result = document.querySelector('.counter__result');
+const errorContainer = document.querySelector('.incorrect__data');
 
 function getCheckedElement(inpursGroup) {
     for(let i = 0; i < inpursGroup.length; i++) {
@@ -6,7 +12,6 @@ function getCheckedElement(inpursGroup) {
             return inpursGroup[i].value;
         }
     }
-
     return '';
 }
 
@@ -18,50 +23,28 @@ function getData() {
         height: parseInt(document.getElementById('height').value),
         weight: parseInt(document.getElementById('weight').value),
     }
-
     return data
-}
-
-// TODO: wrap calculateWeight with try-catch block
-
-function normWeight(data) {
-    return calculateWeight(data);
-}
-
-function loseWeight(data) {
-    return calculateWeight(data) * 0.85;
-}
-
-function putWeight(data) {
-    return calculateWeight(data) * 1.15;
-}
+};
 
 function changeCalculateEnableState() {
     const data = getData();
-    if(!isNaN(data.age) && !isNaN(data.height) && !isNaN(data.weight)) {
-        submit.disabled = false;
-    } else {
-        submit.disabled = true;
-    }
+    const isDataFilled = !isNaN(data.age) && !isNaN(data.height) && !isNaN(data.weight);
+    submit.disabled = !isDataFilled;
 };
 
 function changeResetEnableState() {
     const data = getData();
-    if(!isNaN(data.age) || !isNaN(data.height) || !isNaN(data.weight)) {
-        reset.disabled = false;
-    } else {
-        reset.disabled = true;
-    }
+    const isDataFilled = !isNaN(data.age) || !isNaN(data.height) || !isNaN(data.weight);
+    reset.disabled = !isDataFilled;
 };
 
 function resetFields() {
-    let result = document.querySelector('.counter__result');
     result.classList.add("counter__result--hidden");
+    errorContainer.classList.add("incorrect__data--hidden");
 
     document.getElementById('gender-male').checked = true;
     document.getElementById('activity-minimal').checked = true;
-    let inputsWrapper = document.querySelectorAll('.input__wrapper');
-    inputsWrapper
+    inputs
         .forEach(element => {
             const input = element.firstElementChild;
             input.value = "";
@@ -69,7 +52,7 @@ function resetFields() {
         });
 };
 
-let inputs = document.querySelectorAll('.input__wrapper');
+
 inputs.forEach(element => {
     element.firstElementChild.addEventListener('input', (e) => {
         changeCalculateEnableState();
@@ -77,23 +60,27 @@ inputs.forEach(element => {
     });
 });
 
-const submit = document.querySelector('.form__submit-button');
+
 submit.addEventListener('click', e => {
     e.preventDefault();
-    let result = document.querySelector('.counter__result');
-    result.classList.remove("counter__result--hidden");
+    try {
+        const weight = document.getElementById('calories-norm');
+        weight.textContent = normWeight(getData());
+        
+        const lose = document.getElementById('calories-minimal');
+        lose.textContent = loseWeight(getData());
 
-    let weight = document.getElementById('calories-norm');
-    weight.textContent = normWeight(getData()).toFixed(0);
+        const put = document.getElementById('calories-maximal');
+        put.textContent = putWeight(getData());
 
-    let lose = document.getElementById('calories-minimal');
-    lose.textContent = Math.round(loseWeight(getData()));
-
-    let put = document.getElementById('calories-maximal');
-    put.textContent = putWeight(getData()).toFixed(0);
+        result.classList.remove("counter__result--hidden");
+        errorContainer.classList.add("incorrect__data--hidden");
+    } catch (error) {
+        result.classList.add("counter__result--hidden");
+        errorContainer.classList.remove("incorrect__data--hidden");
+    }
 })
 
-const reset = document.querySelector('.form__reset-button');
 reset.addEventListener('click', e => {
     e.preventDefault();
 
