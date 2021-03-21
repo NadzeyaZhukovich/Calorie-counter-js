@@ -1,5 +1,5 @@
-describe('Check incorrect container ', () => {
-    it('when age -1, height equel 200 , weight eguel 110, activity equel max', () => {
+describe('Check calculations for male for max activity', () => {
+    it('when age equel 45, height equel 200 , weight eguel 110, activity equel max', () => {
         cy.visit('http://localhost:8080/');
 
         cy.get('[data-cy="input-male"]')

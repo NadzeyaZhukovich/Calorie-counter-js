@@ -1,7 +1,7 @@
 const { test, it } = require('@jest/globals');
 const { fail } = require('yargs');
-const { normWeight, loseWeight, putWeight } = require('../js/weight-calculator.js');
-const { IllegalArgumentError } = require('../js/weight-calculator.js');
+const { normWeight, loseWeight, putWeight } = require('../src/js/weight-calculator.js');
+const { IllegalArgumentError } = require('../src/js/weight-calculator.js');
 
 describe('calculateWeightForMan', () => {
   it('returns correct result when data is filled and all values more than 0 and activity is minimal', () => {
